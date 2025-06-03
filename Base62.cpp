@@ -86,7 +86,7 @@ std::string Base62::Base62Decode(std::string strSrc)
     int nLen = strSrc.size();
     unsigned char aryChar4[4];
     unsigned char aryChar3[3];
-    std::string strDir = "\0";
+    std::string strDir;
 
     while (nLen-- 
         && !(strSrc[nSrc] == chCodeFlag 
@@ -145,7 +145,7 @@ std::string Base62::Base62Decode(std::string strSrc)
         {
             if (aryChar4[j] >= 128)
             {
-                aryChar4[j] = strCodes.find(aryChar4[i] - 128);
+                aryChar4[j] = strCodes.find(aryChar4[j] - 128);
                 aryChar4[j] += 61;
             }
             else
